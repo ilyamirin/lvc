@@ -11,11 +11,8 @@ from linkvideo_client_wildberries_client.models import WBCamerasPoints, WBCamera
 def test_basic_operations():
     token: str = os.getenv("LINKVIDEO_TOKEN")
     ic(token)
-    transport = httpx.HTTPTransport(local_address="10.109.172.4")
 
-    client = AuthenticatedClient(base_url="https://api.b2o.goodline.info/ords/mobile/vc2",
-                                 token=token,
-                                 httpx_args={"transport": transport})
+    client = AuthenticatedClient(base_url="https://api.b2o.goodline.info/ords/mobile/vc2", token=token,)
 
     with client:
         points_and_cameras: WBCamerasPoints = get_cameras_all_points.sync(client=client)
